@@ -42,7 +42,10 @@ router.get('/add', function(req, res){
             res.send(err);
         }
         else {
-            res.render('resume/resumeAdd', {'account': result});
+            //res.render('resume/resumeAdd', {'account': result});
+               //NoT RETURNING ANYTHING CHANGED THIS AND RESUME DAL
+            res.render('resume/resumeAdd', {account: result[0], company: result[1], school: result[2], skill: result[3]});
+
         }
     });
 });
@@ -65,6 +68,8 @@ router.get('/insert', function(req, res){
             else {
                 //poor practice, but we will handle it differently once we start using Ajax
                 res.redirect(302, '/resume/all');
+//                res.render('resume/resumeAdd', {account: result[0][0], company: result[1], school: result[2], skill: result[3]});
+
             }
         });
     }
@@ -88,5 +93,17 @@ router.get('/delete', function(req, res){
     }
 });
 
+router.get('/edit', function(req, res){
+    if(req.query.resume_id == null) {
+        res.send('A resume id is required');
+    }
+    else {
+        resume_dal.edit(req.query.resume_id, function(err, result){
+            console.log(result);
+            res.render('resume/resumeUpdate', {account: result[0][0], company: result[1], school: result[2], skill: result[3]});
+        });
+    }
+
+});
 
 module.exports = router;
