@@ -39,29 +39,29 @@
 
     Schools
     <select id="school_id" name="school_id">
-        <% for(var i=0; account.length > i; i++ ) { %>
-        <option value="<%= account[i].account_id %>"><%= account[i].first_name + ', ' + account[i].last_name %></option>
+        <% for(var i=0; school.length > i; i++ ) { %>
+        <option value="<%= school[i].school_id %>"><%= school[i].school_name %></option>
         <% } %>
     </select>
 
     <!-- Initialize the multiselect plugin: -->
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#account_id').multiselect();
+            $('#school_id').multiselect();
         });
     </script>
 
     Skills
     <select id="skill_id" name="skill_id">
-        <% for(var i=0; account.length > i; i++ ) { %>
-        <option value="<%= account[i].account_id %>"><%= account[i].first_name + ', ' + account[i].last_name %></option>
+        <% for(var i=0; skill.length > i; i++ ) { %>
+        <option value="<%= skill[i].skill_id %>"><%= skill[i].name %></option>
         <% } %>
     </select>
 
     <!-- Initialize the multiselect plugin: -->
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#account_id').multiselect();
+            $('#skill_id').multiselect();
         });
     </script>
 
