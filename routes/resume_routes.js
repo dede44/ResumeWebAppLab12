@@ -37,7 +37,7 @@ router.get('/', function(req, res){
 // Return the add a new resume form
 router.get('/add', function(req, res){
     // passing all the query parameters (req.query) to the insert function instead of each individually
-    account_dal.getAll(function(err,result) {
+    resume_dal.resume_add(function(err,result) {
         if (err) {
             res.send(err);
         }
@@ -56,7 +56,7 @@ router.get('/insert', function(req, res){
     if(req.query.resume_name == null) {
         res.send('Resume Name must be provided.');
     }
-    else if(req.query.account_id == null) {
+    else if(req.query.resume_name == null) {
         res.send('An Account must be selected');
     }
     else {
